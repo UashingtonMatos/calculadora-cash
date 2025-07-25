@@ -2,11 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Apostas com Cashback</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Apostas Com Casback</title>
     <link rel="stylesheet" href="estilo.css">
-    <script defer src="script-tripla.js"></script>
 </head>
 
 <body>
@@ -17,8 +16,8 @@
         </label>
         <select id="numApostas" onchange="window.location.href=this.value"
             style="padding: 0.4rem 0.6rem; border-radius: 5px; border: none;">
-            <option value="calculadora-dupla.html">2 (Dupla)</option>
-            <option value="index.html" selected>3 (Tripla)</option>
+            <option value="calculadora-dupla.html" selected>2 (Dupla)</option>
+            <option value="index.html">3 (Tripla)</option>
             <!-- futuramente: <option value="calculadora-quadrupla.html">4 (Quádrupla)</option> -->
         </select>
     </div>
@@ -38,7 +37,7 @@
         <tbody>
             <tr>
                 <td class="symbol" id="s1" onclick="alternarTipo(1)">+</td>
-                <td><input type="number" step="0.01" id="odd1" value="3.00" /></td>
+                <td><input type="number" step="0.01" id="odd1" value="2.00" /></td>
                 <td><input type="number" step="0.1" id="comissao1" value="0.0" /></td>
                 <td>
                     <div id="backGroup1">
@@ -68,7 +67,7 @@
             </tr>
             <tr>
                 <td class="symbol" id="s2" onclick="alternarTipo(2)">+</td>
-                <td><input type="number" step="0.01" id="odd2" value="3.00" /></td>
+                <td><input type="number" step="0.01" id="odd2" value="2.00" /></td>
                 <td><input type="number" step="0.1" id="comissao2" value="0.0" /></td>
                 <td>
                     <div id="backGroup2">
@@ -95,36 +94,6 @@
                     </span>
                 </td>
                 <td id="lucro2">0.00</td>
-            </tr>
-            <tr>
-                <td class="symbol" id="s3" onclick="alternarTipo(3)">+</td>
-                <td><input type="number" step="0.01" id="odd3" value="3.00" /></td>
-                <td><input type="number" step="0.1" id="comissao3" value="0.0" /></td>
-                <td>
-                    <div id="backGroup3">
-                        <input type="number" step="0.01" id="aposta3" placeholder="Aposta" />
-                    </div>
-                    <div class="lay-fields" id="layGroup3">
-                        <label class="lay-label">Responsabilidade</label>
-                        <input type="number" step="0.01" id="resp3" placeholder="Responsabilidade" />
-                        <label class="lay-label">Aposta a favor</label>
-                        <input type="number" step="0.01" id="aFavor3" placeholder="Aposta a favor" />
-                    </div>
-                </td>
-                <td><input type="radio" id="travar3" name="travar" onclick="travar(3)" /></td>
-                <td><input type="number" step="0.1" id="cashback3" value="0.0" /></td>
-                <td class="freebet-cell">
-                    <select id="tipo3" onchange="toggleFreebetMax(3)">
-                        <option value="real">Saldo Real</option>
-                        <option value="freebet">Freebet</option>
-                    </select>
-                    <input type="number" id="maxFreebet3" placeholder="Máx. Freebet"
-                        style="display:none; width:80px;" />
-                    <span id="labelFreebet3" class="freebet-label" style="display:none;">
-                        Máx. Freebet
-                    </span>
-                </td>
-                <td id="lucro3">0.00</td>
             </tr>
             <tr class="total-row">
                 <td id="totalColspan" colspan="3"></td>
@@ -177,7 +146,6 @@
         </ul>
         <p>Em breve suporte a apostas duplas e quadruplas</p>
     </div>
-    <script src="script.js"></script>
-</body>
+    <script src="script-dupla.js"></script>
 
 </html>
