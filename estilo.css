@@ -37,8 +37,9 @@ input[type="radio"] {
 }
 
 input:disabled {
-    background-color: #bbb;
-    color: #000;
+    cursor: default;
+    background-color: light-dark(rgba(190, 190, 190, 0.829), rgba(204, 204, 204, 0.863));
+    color: light-dark(rgb(14, 14, 14), rgb(0, 0, 0));
 }
 
 .symbol {
@@ -56,6 +57,14 @@ input:disabled {
     background: transparent;
 }
 
+.profit {
+    color: limegreen;
+}
+
+.loss {
+    color: red;
+}
+
 .lay-fields {
     display: none;
     margin-top: 0.5rem;
@@ -68,10 +77,16 @@ input:disabled {
     margin-top: 0.4rem;
 }
 
+.hide-commission thead th:nth-child(3),
+.hide-commission tbody tr:not(.total-row) td:nth-child(3) {
+    display: none;
+}
+
 .freebet-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 .freebet-cell input {
@@ -85,11 +100,16 @@ input:disabled {
 }
 
 .freebet-cell select {
+
     border: none;
+
     outline: none;
+
     padding: 0.4rem;
+
     background: white;
     border-radius: 5px;
+
     width: 60%;
     box-sizing: border-box;
 }
