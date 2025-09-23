@@ -2,182 +2,204 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Apostas com Cashback</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <script defer src="script-tripla.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Apostas Com Casback</title>
+  <link rel="stylesheet" href="styletripla.css">
+  <script defer src="script-tripla.js"></script>
+  <script defer src="html2canvas.min.js"></script>
+
 </head>
 
 <body>
-    <h2>Calculadora de Apostas Com Cashback</h2>
-    <div style="margin: 1rem 0; display: flex; align-items: center;">
-        <label for="numApostas" style="margin-right: 0.5rem; font-weight: bold;">
-            Número de apostas:
-        </label>
-        <select id="numApostas" onchange="window.location.href=this.value"
-            style="padding: 0.4rem 0.6rem; border-radius: 5px; border: none;">
-            <option value="calculadora-dupla.html">2 (Dupla)</option>
-            <option value="index.html" selected>3 (Tripla)</option>
-            <!-- futuramente: <option value="calculadora-quadrupla.html">4 (Quádrupla)</option> -->
-        </select>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Chance</th>
-                <th>Odd</th>
-                <th>Comissão (%)</th>
-                <th>Aposta</th>
-                <th>Travar</th>
-                <th>Cashback (%)</th>
-                <th>Tipo Cashback</th>
-                <th>Lucro</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="symbol" id="s1" onclick="alternarTipo(1)">+</td>
-                <td><input type="number" step="0.01" id="odd1" value="3.00" /></td>
-                <td><input type="number" step="0.1" id="comissao1" value="0.0" /></td>
-                <td>
-                    <div id="backGroup1">
-                        <input type="number" step="0.01" id="aposta1" placeholder="Aposta" />
-                    </div>
-                    <div class="lay-fields" id="layGroup1">
-                        <label class="lay-label">Responsabilidade</label>
-                        <input type="number" step="0.01" id="resp1" placeholder="Responsabilidade" />
-                        <label class="lay-label">Aposta a favor</label>
-                        <input type="number" step="0.01" id="aFavor1" placeholder="Aposta a favor" />
-                    </div>
-                </td>
-                <td><input type="radio" id="travar1" name="travar" onclick="travar(1)" /></td>
-                <td><input type="number" step="0.1" id="cashback1" value="0.0" /></td>
-                <td class="freebet-cell">
-                    <select id="tipo1" onchange="toggleFreebetMax(1)">
-                        <option value="real">Saldo Real</option>
-                        <option value="freebet">Freebet</option>
-                    </select>
-                    <input type="number" id="maxFreebet1" placeholder="Máx. Freebet"
-                        style="display:none; width:80px;" />
-                    <span id="labelFreebet1" class="freebet-label" style="display:none;">
-                        Máx. Freebet
-                    </span>
-                </td>
-                <td id="lucro1">0.00</td>
-            </tr>
-            <tr>
-                <td class="symbol" id="s2" onclick="alternarTipo(2)">+</td>
-                <td><input type="number" step="0.01" id="odd2" value="3.00" /></td>
-                <td><input type="number" step="0.1" id="comissao2" value="0.0" /></td>
-                <td>
-                    <div id="backGroup2">
-                        <input type="number" step="0.01" id="aposta2" placeholder="Aposta" />
-                    </div>
-                    <div class="lay-fields" id="layGroup2">
-                        <label class="lay-label">Responsabilidade</label>
-                        <input type="number" step="0.01" id="resp2" placeholder="Responsabilidade" />
-                        <label class="lay-label">Aposta a favor</label>
-                        <input type="number" step="0.01" id="aFavor2" placeholder="Aposta a favor" />
-                    </div>
-                </td>
-                <td><input type="radio" id="travar2" name="travar" onclick="travar(2)" /></td>
-                <td><input type="number" step="0.1" id="cashback2" value="0.0" /></td>
-                <td class="freebet-cell">
-                    <select id="tipo2" onchange="toggleFreebetMax(2)">
-                        <option value="real">Saldo Real</option>
-                        <option value="freebet">Freebet</option>
-                    </select>
-                    <input type="number" id="maxFreebet2" placeholder="Máx. Freebet"
-                        style="display:none; width:80px;" />
-                    <span id="labelFreebet2" class="freebet-label" style="display:none;">
-                        Máx. Freebet
-                    </span>
-                </td>
-                <td id="lucro2">0.00</td>
-            </tr>
-            <tr>
-                <td class="symbol" id="s3" onclick="alternarTipo(3)">+</td>
-                <td><input type="number" step="0.01" id="odd3" value="3.00" /></td>
-                <td><input type="number" step="0.1" id="comissao3" value="0.0" /></td>
-                <td>
-                    <div id="backGroup3">
-                        <input type="number" step="0.01" id="aposta3" placeholder="Aposta" />
-                    </div>
-                    <div class="lay-fields" id="layGroup3">
-                        <label class="lay-label">Responsabilidade</label>
-                        <input type="number" step="0.01" id="resp3" placeholder="Responsabilidade" />
-                        <label class="lay-label">Aposta a favor</label>
-                        <input type="number" step="0.01" id="aFavor3" placeholder="Aposta a favor" />
-                    </div>
-                </td>
-                <td><input type="radio" id="travar3" name="travar" onclick="travar(3)" /></td>
-                <td><input type="number" step="0.1" id="cashback3" value="0.0" /></td>
-                <td class="freebet-cell">
-                    <select id="tipo3" onchange="toggleFreebetMax(3)">
-                        <option value="real">Saldo Real</option>
-                        <option value="freebet">Freebet</option>
-                    </select>
-                    <input type="number" id="maxFreebet3" placeholder="Máx. Freebet"
-                        style="display:none; width:80px;" />
-                    <span id="labelFreebet3" class="freebet-label" style="display:none;">
-                        Máx. Freebet
-                    </span>
-                </td>
-                <td id="lucro3">0.00</td>
-            </tr>
-            <tr class="total-row">
-                <td id="totalColspan" colspan="3"></td>
-                <td>
-                    <input type="number" step="0.01" id="montanteTotal" placeholder="Total" readonly />
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <div style="margin-top: 1rem;">
-        <label>
-            Conversão Freebet (%):
-            <input type="number" id="freebetConversion" value="75" min="0" max="100" step="1"
-                style="width:50px; margin-left:0.5rem;" />
-        </label>
-    </div>
+  <h2>Calculadora de Apostas Com Cashback</h2>
+  <div style="margin: 1rem 0; display: flex; align-items: center;">
+    <label for="numApostas" style="margin-right: 0.5rem; font-weight: bold;">
+      Número de apostas:
+    </label>
+    <select id="numApostas" onchange="window.location.href=this.value"
+      style="padding: 0.4rem 0.6rem; border-radius: 5px; border: none;">
+      <option value="calculadora-dupla.html">2 (Dupla)</option>
+      <option value="index.html" selected>3 (Tripla)</option>
+    </select>
+    <label for="tituloJogo" style="margin-right: 0.5rem; font-weight: bold;">
 
-    <div style="margin-top: 1rem;">
-        <label>
-            <input type="checkbox" id="arredondarCheck" />
-            Arredondar aposta até:
-        </label>
-        <input type="number" id="arredondarValor" value="5" min="1" max="5" step="1"
-            style="width: 50px; margin-left: 0.5rem;" />
+    </label>
+    <input type="text" id="tituloJogo" placeholder="Partida" maxlength="80"
+      style="flex: 1; max-width: 220px; padding: 0.5rem 0.6rem; border: none; border-radius: 6px; background: #fff; color: #111; outline: none; margin-right: 1rem;" />
+    <div id="percentualRetorno"
+      style="position: absolute; top: 10px; right: 10px; font-size: 18px; font-weight: bold; color: #006400; background: #f0f0f0; padding: 6px 10px; border-radius: 8px; box-shadow: 0 0 4px rgba(0,0,0,0.2);">
+      0.00%
     </div>
-    <div style="margin-top: 1rem;">
-        <label>
-            <input type="checkbox" id="toggleCommissionCheckbox" checked
-                style="transform: scale(1.2); margin-right: 0.5rem;" />
-            Exibir Comissão
-        </label>
-    </div>
-    <div id="updateNote" style="margin-top:1.5rem; font-size:0.9rem; color:#ccc;">
-        <strong>Atualizações implementadas:</strong>
-        <ul style="margin:0.5rem 0 0 1.2rem; padding:0;">
-            <li>Botão de exibição/ocultação de comissão.</li>
-            <li>
-                Suporte para cashback com Freebet: agora é possível selecionar o tipo de cashback pela coluna “Tipo
-                Cashback”.
-                O cálculo relativo ao cashback em Freebet usa a taxa de conversão de Freebet (padrão 75%, editável)
-                e respeita o valor máximo de Freebet configurado (campo opcional).
-            </li>
-            <li>Ajustes personalizados para montantes de apostas. O lucro só vai ser equilibrado se o usuário alterar o
-                montante de aposta que está travado, se alterar qualquer valor de aposta que não estiver travada, não
-                será feito o equilibrio e o lucro será calculado de acordo com os montantes em cada aposta</li>
-        </ul>
-        <p>Em breve suporte a apostas duplas e quadruplas</p>
-    </div>
-    <script src="script.js"></script>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Chance</th>
+        <th>Odd</th>
+        <th>Comissão (%)</th>
+        <th>Casa</th>
+        <th>Aposta</th>
+        <th>Travar</th>
+        <th>Cashback (%)</th>
+        <th>Tipo Cashback</th>
+        <th>Lucro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="symbol" id="s1" onclick="alternarTipo(1)">+</td>
+        <td><input type="number" step="0.01" id="odd1" value="3" /></td>
+        <td><input type="number" step="0.1" id="comissao1" value="0" /></td>
+        <td class="casa-cell">
+          <input type="text" id="casa1" placeholder="Casa" style="width:80px;" />
+          <label style="font-size:0.75rem; display:block; margin-top:4px; color:#ccc;">
+            <input type="checkbox" id="entrada1" />
+            Entrada feita
+          </label>
+        </td>
+        <td>
+          <div id="backGroup1">
+            <input type="number" step="0.01" id="aposta1" placeholder="Aposta" />
+          </div>
+          <div class="lay-fields" id="layGroup1">
+            <label class="lay-label">Responsabilidade</label>
+            <input type="number" step="0.01" id="resp1" placeholder="Responsabilidade" />
+            <label class="lay-label">Aposta a favor</label>
+            <input type="number" step="0.01" id="aFavor1" placeholder="Aposta a favor" />
+          </div>
+        </td>
+        <td><input type="radio" id="travar1" name="travar" onclick="travar(1)" /></td>
+        <td><input type="number" step="0.1" id="cashback1" value="0" /></td>
+        <td class="freebet-cell">
+          <select id="tipo1" onchange="toggleFreebetMax(1)">
+            <option value="real">Saldo Real</option>
+            <option value="freebet">Freebet</option>
+            <option value="deposito">Depósito</option>
+          </select>
+          <input type="number" id="maxFreebet1" placeholder="Máx. Freebet" style="display:none; width:80px;" />
+          <span id="labelFreebet1" class="freebet-label" style="display:none;">
+            Máx. Freebet
+          </span>
+        </td>
+        <td id="lucro1">0.00</td>
+      </tr>
+      <tr>
+        <td class="symbol" id="s2" onclick="alternarTipo(2)">+</td>
+        <td><input type="number" step="0.01" id="odd2" value="3" /></td>
+        <td><input type="number" step="0.1" id="comissao2" value="0" /></td>
+        <td class="casa-cell">
+          <input type="text" id="casa2" placeholder="Casa" style="width:80px;" />
+          <label style="font-size:0.75rem; display:block; margin-top:4px; color:#ccc;">
+            <input type="checkbox" id="entrada2" />
+            Entrada feita
+          </label>
+        </td>
+        <td>
+          <div id="backGroup2">
+            <input type="number" step="0.01" id="aposta2" placeholder="Aposta" />
+          </div>
+          <div class="lay-fields" id="layGroup2">
+            <label class="lay-label">Responsabilidade</label>
+            <input type="number" step="0.01" id="resp2" placeholder="Responsabilidade" />
+            <label class="lay-label">Aposta a favor</label>
+            <input type="number" step="0.01" id="aFavor2" placeholder="Aposta a favor" />
+          </div>
+        </td>
+        <td><input type="radio" id="travar2" name="travar" onclick="travar(2)" /></td>
+        <td><input type="number" step="0.1" id="cashback2" value="0" /></td>
+        <td class="freebet-cell">
+          <select id="tipo2" onchange="toggleFreebetMax(2)">
+            <option value="real">Saldo Real</option>
+            <option value="freebet">Freebet</option>
+            <option value="deposito">Depósito</option>
+          </select>
+          <input type="number" id="maxFreebet2" placeholder="Máx. Freebet" style="display:none; width:80px;" />
+          <span id="labelFreebet2" class="freebet-label" style="display:none;">
+            Máx. Freebet
+          </span>
+        </td>
+        <td id="lucro2">0.00</td>
+      </tr>
+      <tr>
+        <td class="symbol" id="s3" onclick="alternarTipo(3)">+</td>
+        <td><input type="number" step="0.01" id="odd3" value="3" /></td>
+        <td><input type="number" step="0.1" id="comissao3" value="0" /></td>
+        <td class="casa-cell">
+          <input type="text" id="casa3" placeholder="Casa" style="width:80px;" />
+          <label style="font-size:0.75rem; display:block; margin-top:4px; color:#ccc;">
+            <input type="checkbox" id="entrada3" />
+            Entrada feita
+          </label>
+        </td>
+        <td>
+          <div id="backGroup3">
+            <input type="number" step="0.01" id="aposta3" placeholder="Aposta" />
+          </div>
+          <div class="lay-fields" id="layGroup3">
+            <label class="lay-label">Responsabilidade</label>
+            <input type="number" step="0.01" id="resp3" placeholder="Responsabilidade" />
+            <label class="lay-label">Aposta a favor</label>
+            <input type="number" step="0.01" id="aFavor3" placeholder="Aposta a favor" />
+          </div>
+        </td>
+        <td><input type="radio" id="travar3" name="travar" onclick="travar(3)" /></td>
+        <td><input type="number" step="0.1" id="cashback3" value="0" /></td>
+        <td class="freebet-cell">
+          <select id="tipo3" onchange="toggleFreebetMax(3)">
+            <option value="real">Saldo Real</option>
+            <option value="freebet">Freebet</option>
+            <option value="deposito">Depósito</option>
+          </select>
+          <input type="number" id="maxFreebet3" placeholder="Máx. Freebet" style="display:none; width:80px;" />
+          <span id="labelFreebet3" class="freebet-label" style="display:none;">
+            Máx. Freebet
+          </span>
+        </td>
+        <td id="lucro3">0.00</td>
+      </tr>
+      <tr class="total-row">
+        <td id="totalColspan" colspan="3"></td>
+        <td></td>
+        <td>
+          <input type="number" step="0.01" id="montanteTotal" placeholder="Total" readonly />
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top: 1rem;">
+    <button id="btnScreenshot"
+      style="padding: 0.6rem 1rem; border: none; border-radius: 6px; background: #007BFF; color: white; cursor: pointer;">
+      📸 Salvar imagem
+    </button>
+  </div>
+
+  <div style="margin-top: 1rem;">
+    <label>
+      Conversão Freebet (%):
+      <input type="number" id="freebetConversion" value="75" min="0" max="100" step="1"
+        style="width:50px; margin-left:0.5rem;" />
+    </label>
+  </div>
+
+  <div style="margin-top: 1rem;">
+    <label>
+      <input type="checkbox" id="arredondarCheck" />
+      Arredondar aposta até:
+    </label>
+    <input type="number" id="arredondarValor" value="5" min="1" max="5" step="1"
+      style="width: 50px; margin-left: 0.5rem;" />
+  </div>
+  <div style="margin-top: 1rem;">
+    <label>
+      <input type="checkbox" id="toggleCommissionCheckbox" style="transform: scale(1.2); margin-right: 0.5rem;" />
+      Exibir Comissão
+    </label>
+  </div>
 </body>
 
 </html>
